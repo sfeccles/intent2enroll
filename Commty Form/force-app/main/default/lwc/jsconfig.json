@@ -2,11 +2,7 @@
     "compilerOptions": {
         "experimentalDecorators": true,
         "baseUrl": ".",
-        "paths": {
-            "c/intent2enroll": [
-                "intent2enroll/intent2enroll.js"
-            ]
-        }
+        "paths": {}
     },
     "include": [
         "**/*",

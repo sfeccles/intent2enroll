@@ -1,0 +1,153 @@
+<template>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_1-of-3">
+            <span>
+
+    <lightning-card
+        title="Find AppProg"
+        icon-name="custom:custom63"
+    >
+        <div class="slds-m-around_medium">
+            <lightning-input
+                type="search"
+                onchange={handleKeyChange}
+                class="slds-m-bottom_small"
+                label="Search"
+                value={searchKey}
+            ></lightning-input>
+
+            <template if:true={Application_Programs1.data}>
+                <div class="slds-box slds-theme_default">
+                    <template for:each={Application_Programs1.data} for:item="Application_Program__c">         
+
+                           <p key={Application_Program__c.Id}>{Application_Program__c.Id}<br />
+                                {Application_Program__c.Name}<br/>   
+                                {Application_Program__c.First_Name__c} {Application_Program__c.Last_Name__c}<br />
+                                {Application_Program__c.Date_of_Birth__c}<br />
+                                {Application_Program__c.uNID__c}<br />
+                                {Application_Program__c.High_School__c}<br /> 
+                            
+                            </p>
+
+                    </template> 
+
+                </div> 
+
+            </template>
+
+            <template for:each={Application_Programs1.data} for:item="Application_Program__c"> 
+                <template if:true={Application_Program__c.Id}>
+                    <lightning-radio-group key={Application_Program__c.Id} name="radioGroup"
+                        label="Is this you?"
+                        options={options}
+                        value={value}
+                        onchange={handleWhoChange}
+                        required
+                        type="button">
+                    </lightning-radio-group>
+                </template>  
+            </template> 
+
+            <template if:true={Application_Programs1.error}>
+                <c-error-panel errors={Application_Programs1.error}></c-error-panel>
+            </template>
+        </div>
+    </lightning-card>
+
+</span>
+</div>
+      
+<div class="slds-col slds-size_2-of-3">
+        <span>
+                <article class="slds-card slds-hide" data-id="form1">
+                    <lightning-card>
+                        <div class="slds-card__body slds-card__body_inner"> <!--record-id={recordId},  a1j2i0000008RsoAAE-->
+                            <lightning-record-view-form
+                            record-id="a1j2i0000008OgHAAU"
+                            object-api-name={appProgObject}>
+                        <div class="slds-box">
+<!--
+                                <div class="slds-col slds-size_1-of-2">
+                                        <lightning-formatted-text value={nameValue}
+                                            class="slds-text-heading_large">
+                                        </lightning-formatted-text>
+                                    </div>
+-->                          <lightning-output-field field-name="First_Name__c">
+                            </lightning-output-field>
+                            <lightning-output-field field-name="Last_Name__c">
+                            </lightning-output-field>
+                            </div>
+                        </lightning-record-view-form>
+                        <p slot="footer"><button class="slds-button slds-button_brand"  onclick={showArtCard1}>Next</button></p>
+
+
+
+
+
+
+<!--                        <lightning-record-view-form 
+                            record-id={recordId}
+                            object-api-name={appProgObject}
+                            fields={bsFields}
+                            mode="view"
+                            onsuccess={handleAppProgUpdated}>
+                        </lightning-record-view-form>  -->
+                        </div>
+                    </lightning-card>
+                        </article>
+                        <article class="slds-card slds-hide" data-id="artCard1">
+                            <lightning-card  title="Form Page 1">
+                                <lightning-button label="New" slot="actions"></lightning-button>
+                                <lightning-record-view-form
+                                    record-id="a1j2i0000008OgHAAU"
+                                    object-api-name={appProgObject}>
+                                <div class="slds-box">
+                                    <lightning-output-field field-name="Date_of_Birth__c">
+                                    </lightning-output-field>
+                                    <lightning-output-field field-name="uNID__c">
+                                    </lightning-output-field>
+                                    </div>
+                                </lightning-record-view-form>
+
+
+                                <p slot="footer">
+                                        <button class="slds-button slds-button_brand"  onclick={showArtCard2}>Next</button>
+                                      </p>
+                            </lightning-card>
+                        </article>
+                        <article class="slds-card slds-hide" data-id="artCard2">
+                            <lightning-card  title="Form Page 2">
+                                <lightning-button label="New" slot="actions"></lightning-button>
+                                <p class="slds-p-horizontal_small">This is Card 2</p>
+                                <lightning-record-edit-form
+                                    record-id="a1j2i0000008OgHAAU"
+                                    object-api-name={appProgObject}>
+                                <div class="slds-box">
+                                    <lightning-input-field field-name="Enrollment_Decision__c">
+                                    </lightning-input-field>
+                                    <lightning-input-field field-name="Not_Joining_Reason__c">
+                                    </lightning-input-field>
+                                    </div>
+                                </lightning-record-edit-form>
+
+
+
+                                <p slot="footer"><button class="slds-button slds-button_brand"  onclick={showArtCard3}>Next</button></p>
+                            </lightning-card>
+                        </article>
+                        <article class="slds-card slds-hide" data-id="artCard3">
+                            <lightning-card  title="Form Page 3">
+                                
+                                <p class="slds-p-horizontal_small">Final text or more fields</p>
+                                <p slot="footer"><button class="slds-button slds-button_brand" >Next</button></p>
+                            </lightning-card>
+                </article>
+                    
+
+        </span>
+</div>
+
+
+
+</div>
+</template>

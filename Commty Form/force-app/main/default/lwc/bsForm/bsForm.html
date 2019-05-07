@@ -1,0 +1,34 @@
+<template>
+    <article class="slds-card slds-hide" data-id="form1">
+    <lightning-record-form 
+        record-id={recordId}
+        object-api-name={appProgObject}
+        fields={bsFields}
+        onsuccess={handleAppProgUpdated}>
+    </lightning-record-form>
+    </article>
+    <article class="slds-card" data-id="artCard1">
+        <lightning-card  title="Form Page 1">
+            <lightning-button label="New" slot="actions"></lightning-button>
+            <p class="slds-p-horizontal_small">Card Body (custom component)</p>
+            <p slot="footer">
+                    <button class="slds-button slds-button_brand"  onclick={showArtCard2}>Next</button>
+                  </p>
+        </lightning-card>
+    </article>
+    <article class="slds-card slds-hide" data-id="artCard2">
+        <lightning-card  title="Form Page 2">
+            <lightning-button label="New" slot="actions"></lightning-button>
+            <p class="slds-p-horizontal_small">Card Body (custom component)</p>
+            <p slot="footer"><button class="slds-button slds-button_brand"  onclick={showArtCard3}>Next</button></p>
+        </lightning-card>
+    </article>
+    <article class="slds-card slds-hide" data-id="artCard3">
+        <lightning-card  title="Form Page 3">
+            <lightning-button label="New" slot="actions"></lightning-button>
+            <p class="slds-p-horizontal_small">Card Body (custom component)</p>
+            <p slot="footer"><button class="slds-button slds-button_brand" >Next</button></p>
+        </lightning-card>
+    </article>
+
+</template>
